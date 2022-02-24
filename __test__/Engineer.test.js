@@ -1,6 +1,16 @@
 const Engineer = require("../lib/Engineer");
 
-describe("engineer", () => {
+describe("Engineer", () => {
+    describe("engineer info", () => {
+        it("should return the info of the engineer", () => {
+          const engineer = new Engineer(1, "John", "johnsmith@example.com");
+          expect(engineer.name).toEqual("John");
+          expect(engineer.id).toEqual(1);
+          expect(engineer.email).toEqual("johnsmith@example.com");
+          expect(engineer.role).toEqual("Engineer");
+        });
+      });
+
   describe("getName()", () => {
     it("should return the name of the engineer", () => {
       const engineer = new Engineer(
