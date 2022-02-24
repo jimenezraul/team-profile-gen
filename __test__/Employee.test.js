@@ -6,10 +6,9 @@ describe("Employee", () => {
       const employee = new Employee(
         1,
         "John",
-        "Smith",
         "johnsmith@example.com"
       );
-      expect(employee.getName()).toEqual("John Smith");
+      expect(employee.getName()).toEqual("John");
     });
   });
 
@@ -18,7 +17,6 @@ describe("Employee", () => {
       const employee = new Employee(
         1,
         "John",
-        "Smith",
         "johnsmith@example.com"
       );
       expect(employee.getId()).toEqual(1);
@@ -30,7 +28,6 @@ describe("Employee", () => {
       const employee = new Employee(
         1,
         "John",
-        "Smith",
         "johnsmith@example.com"
       );
       expect(employee.getEmail()).toEqual("johnsmith@example.com");
@@ -42,7 +39,6 @@ describe("Employee", () => {
       const employee = new Employee(
         1,
         "John",
-        "Smith",
         "johnsmith@example.com"
       );
       expect(employee.getRole()).toEqual("Employee");
