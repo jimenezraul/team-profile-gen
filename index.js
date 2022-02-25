@@ -2,6 +2,8 @@ const inquirer = require("inquirer");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+const Template = require("./src/template");
+const fs = require("fs");
 
 class Employees {
   constructor() {
@@ -15,21 +17,43 @@ class Employees {
           type: "input",
           name: "name",
           message: "Manager Name: ",
+          validate: (value) => {
+            if (value) {
+              return true;
+            }
+            return `Please enter a Manager name.`;
+          },
         },
         {
           type: "input",
           name: "id",
           message: "Manager ID: ",
+          validate: (value) => {
+            const num = parseInt(value);
+            var valid = Number.isInteger(num);
+            return valid || `Please enter a valid Manager ID.`;
+          },
         },
         {
           type: "input",
           name: "email",
           message: "Manager email: ",
+          validate: (value) => {
+            if (value) {
+              return true;
+            }
+            return "Please enter a Manager email.";
+          },
         },
         {
           type: "input",
           name: "officeNumber",
           message: "Manager office number: ",
+          validate: (value) => {
+            const num = parseInt(value);
+            var valid = Number.isInteger(num);
+            return valid || `Please enter a valid Manager office number.`;
+          },
         },
       ])
       .then((answers) => {
@@ -72,21 +96,44 @@ class Employees {
           type: "input",
           name: "name",
           message: "Engineer Name: ",
+          validate: (value) => {
+            if (value) {
+              return true;
+            }
+            return "Please enter a Engineer name.";
+          },
         },
         {
           type: "input",
           name: "id",
           message: "Engineer ID: ",
+          validate: (value) => {
+            const num = parseInt(value);
+            var valid = Number.isInteger(num);
+            return valid || `Please enter a valid Engineer ID.`;
+          },
         },
         {
           type: "input",
           name: "email",
           message: "Engineer email: ",
+          validate: (value) => {
+            if (value) {
+              return true;
+            }
+            return "Please enter a Engineer email.";
+          },
         },
         {
           type: "input",
           name: "github",
           message: "Engineer github username: ",
+          validate: (value) => {
+            if (value) {
+              return true;
+            }
+            return "Please enter a Engineer github username.";
+          },
         },
       ])
       .then((answers) => {
@@ -108,21 +155,44 @@ class Employees {
           type: "input",
           name: "name",
           message: "Intern Name: ",
+          validate: (value) => {
+            if (value) {
+              return true;
+            }
+            return "Please enter an Intern name.";
+          },
         },
         {
           type: "input",
           name: "id",
           message: "Intern ID: ",
+          validate: (value) => {
+            const num = parseInt(value);
+            var valid = Number.isInteger(num);
+            return valid || `Please enter a valid Intern ID.`;
+          },
         },
         {
           type: "input",
           name: "email",
           message: "Intern email: ",
+          validate: (value) => {
+            if (value) {
+              return true;
+            }
+            return "Please enter an Intern email.";
+          },
         },
         {
           type: "input",
           name: "school",
           message: "Intern school: ",
+          validate: (value) => {
+            if (value) {
+              return true;
+            }
+            return "Please enter an Intern school.";
+          },
         },
       ])
       .then((answers) => {
@@ -138,7 +208,14 @@ class Employees {
   }
 
   complete() {
-    console.log(this.employees);
+    const template = new Template(this.employees);
+    // create a new file named team.html
+    fs.writeFile("./dist/team.html", template.generateHTML(), function (err) {
+      if (err) {
+        return console.log(err);
+      }
+      console.log("HTML Created Successfully!");
+    });
   }
 }
 
