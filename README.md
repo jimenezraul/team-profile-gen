@@ -18,7 +18,7 @@ The team profile generator is a command line tool that generates a team profile 
   - [Questions](#questions)
 
 ## Usage
-Once you install all the dependencies, you can run the app by typing `node index.js` in the terminal. The user is prompted to answer questions and provide information about their team. The app will generate a team.html file in the dist directory that contains all the information provided by the user.
+Once you install all the dependencies, you can run the app by typing `node index.js` in the terminal. The user is prompted to answer some questions and provide information about their team. The app will generate a team.html file in the dist directory that contains all the information provided by the user.
 
 ## License
 ![badge](https://img.shields.io/badge/license-MIT-brightgreen)   
